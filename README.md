@@ -1,4 +1,2 @@
-rdb-fullstack
-=============
-
-Common code for the Relational Databases and Full Stack Fundamentals courses
+# list-maker
+udacity full-stack-web-developer project
