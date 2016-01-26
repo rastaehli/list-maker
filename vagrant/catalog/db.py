@@ -1,4 +1,5 @@
 import psycopg2
+import pdb
 
 # Convenience wrapper for database access via psycopg2.
 # Responsible for opening/closing connections, managing 
@@ -21,7 +22,18 @@ class DB():
         result = conn.cursor().execute(sql, params)
         conn.commit()
         conn.close()
-        # print result
+        
+    # insert values list (DEFAULT will be appended for id column) into table
+    def insert(self, table, valuesList, params):
+        # print sql, params
+        conn = self.connect()
+        cursor = conn.cursor()
+        sql = "INSERT INTO "+table+" values (DEFAULT, "+valuesList+") RETURNING id;"
+        cursor.execute(sql, params)
+        rowid = cursor.fetchone()[0]
+        conn.commit()
+        conn.close()
+        return rowid
 
     def fetchAll(self, sql, params):
         # print sql, params

@@ -16,6 +16,7 @@ CREATE TABLE CATEGORY(
 CREATE TABLE LIST_TYPE(
 	id SERIAL UNIQUE PRIMARY KEY,  -- GUID for this row
 	name VARCHAR(32), -- display name for this type
+	category INTEGER REFERENCES CATEGORY,  -- identifies category row to which this type belongs.
 	description VARCHAR(1024));  -- free text description of list purpose.
 
 CREATE TABLE LIST_ENTRY(

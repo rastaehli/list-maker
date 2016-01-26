@@ -19,20 +19,28 @@ class ListMaker():
     def __init__(self, database):
         self.database = database
         self.categories = category.Store(database)  # persistent store for categories
-        self.listTypes = list_type.Store(database) # persistent store for types
-        self.listItems = list_item.Store(database) # persistent store for items
+        self.listTypes = list_type.Store(database, ) # persistent store for types
+ 
+    def deleteType(self, type):
+        self.listTypes.delete(type)
 
-    def deleteType(self, name):
-        self.listTypes.delete(name)
-
-    def deleteCategory(self, name):
-        self.categories.delete(name)
-
-    def deleteItem(self, name):
-        self.listItems.delete(name)
+    def deleteCategory(self, category):
+        self.categories.delete(category.name)
 
     def deleteAll(self):
-        self.categories.deleteAll()
         self.listTypes.deleteAll()
-        self.listItems.deleteAll()
+        self.categories.deleteAll()
+
+    def addCategory(self, name):
+        return self.categories.add(name)
+
+    def getCategories(self):
+        return self.categories.getAll()
+
+    def addListType(self, name, category, description, listEntries):
+        return self.listTypes.add(name, category, description, listEntries)
+
+    def getLatest(self):
+        return self.listTypes.getLatest()
+
 
