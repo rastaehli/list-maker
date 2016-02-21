@@ -3,14 +3,25 @@
 # list-maker-test.py -- test Database implementation of check-list management system.
 #
 
-import db
-import list_maker
-import list_type
-import list_item
+#uncomment next lines to test the ORM python app directly
+import lm_orm
+import list_maker_orm
+lm = list_maker_orm.ListMaker()
 
-# init database access objects
-myDb = db.DB("list_maker")
-lm = list_maker.ListMaker(myDb)
+#uncomment next lines to test the old python app directly
+# import list_type
+# import list_item
+# import db
+# import list_maker
+# myDb = db.DB("list_maker")
+# lm = list_maker.ListMaker(myDb)
+
+#uncomment next lines to test the python app via RESTful client/service wrappers
+# import list_type
+# import list_item
+# import lm_rest_proxy
+# lm = lm_rest_proxy.ListMakerProxy("http://localhost:8081/listmaker")
+
 
 def testDeleteAll():
     lm.deleteAll()

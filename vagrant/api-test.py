@@ -1,7 +1,7 @@
-# unit tests for list-maker REST api
-import listMaker_mod
+# unit tests for list_maker REST api
+import list_maker
 
-listMaker = listMaker_mod.createListMaker()
+listMaker = list_maker.ListMaker()
 
 categories = []
 types = []
@@ -181,8 +181,9 @@ def testDeleteType_not_exists():
 
 def assert400Error(e):
     print("expected 400 error, got: ",e)
-    if e != HTTP400Error:
-        raise ValueError(e)
+    if e != ValueError:
+        #raise ValueError(e)
+        raise ValueError("occured, but don't know how to print error message")
 
 if __name__ == '__main__':
     testDeleteType_not_exists()

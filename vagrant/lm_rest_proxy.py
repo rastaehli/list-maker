@@ -1,6 +1,6 @@
 import flaskr
 
-// proxy class for accessing a flask-based rest-ful listmaker service
+# proxy class for accessing a flask-based rest-ful listmaker service
 def client(request):
     client = flaskr.app.test_client()
     with flaskr.app.app_context():

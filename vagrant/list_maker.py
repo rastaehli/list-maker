@@ -7,9 +7,6 @@ import category
 import list_type
 import list_item
 
-def createListMaker():
-    return ListMaker("noSuchDatabase")
-
 # ListMaker is responsible for creating and managing list types:
 #  - creating, reading, updating and deleting list types
 #  - categorizing those types; creating/reading/updating/deleting categories
