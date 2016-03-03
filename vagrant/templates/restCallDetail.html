@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner listtype">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>{{ restCall.method }}  {{ restCall.path }}</h1>
+		</div>
+	</div>
+
+	<h1>{{ restCall.method }}  {{ restCall.path }}</h1>
+
+	{% for param in restCall.parameters %}
+\			<div class="row">
+				<div class="col-md-1"></div>
+					<div class="col-md-10 typelist-list">
+						<h3> {{param.type}} {{param.name}} {{param.description}}</h3>
+					</div>
+				<div class="col-md-1"></div>
+			</div>
+	{% endfor %}
+{% endblock %}
