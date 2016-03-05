@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
-from orm_api_ed import Base, ParameterType, Parameter, RestCall, db_connection_info
+from orm_api_ed import Base, Parameter, RestCall, db_connection_info
 
 from flask import session as login_session
 
@@ -34,6 +34,8 @@ def showRestCalls():
 def showRestCallDetail(call_id):
   restCall = session.query(RestCall).filter_by(id = call_id).one()
   return render_template('restCallDetail.html', restCall = restCall)
+
+
 
 if __name__ == '__main__':
   # app.secret_key = 'super_secret_key'
